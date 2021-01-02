@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 
 Route::get('/', [InicioController::class, 'index']);
+Route::get('/compartilhar', [InicioController::class, 'compartilhar']);
+Route::get('/tecnica', [InicioController::class, 'create']);
+Route::post('/criar', [InicioController::class, 'store']);
 
-Route::get('/publicar/topico', [InicioController::class, 'create']);

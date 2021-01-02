@@ -7,8 +7,10 @@
     <!-- Blibioteca Bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
-<body>
-    <!-- Menu -->
+<body class="p-0">
+    <div class="container-fluid p-0">
+        <!-- Menu -->
+    
     <!-- Menu -->
     <div class="container-fluid bg-primary sticky-top">
         <header>
@@ -21,30 +23,26 @@
                 </div>
                 <!-- Botões -->
                 <div class="col d-flex justify-content-end">
-                    <div>
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a href="/" class="nav-link text-white">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/publicar/topico" class="nav-link text-white">Criar Topico</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/" class="nav-link text-white">Entrar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/" class="nav-link text-white">Publicar Arte</a>
-                                </li>
-                                <!-- Modal Contatos -->
-                                <li class="nav-item">
-                                    <a href="/" class="nav-link text-white" data-toggle="modal" data-target="#exampleModal">contato</a>
-                                </li>
-                            </ul>
+                    <nav class="navbar navbar-expand-lg navbar-light justify-content-end p-0">
+                        
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse collapse show" id="navb" style="">
+                        
+                            <a href="/"><button type="button" class="btn btn-primary"><font class="border-right pr-3">inicio</font></button></a>
+                            <a href="/compartilhar"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Compartilhar</font></button></a>
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Contatos</button>
+                        
+                        
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" id="search" name="search">
+                                <button class="btn btn-success my-2 my-sm-0" type="button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pesquisa</font></font></button>
+                            </form>
                         </div>
                     </nav>
-                    </div>
+                    
                 </div>
             </div>
         </header>
@@ -77,7 +75,26 @@
         </div>
     </div>
     <!-- Conteudo -->
+    @if(session('msg'))
+        <div class="border border-secondary mw-100 bg-success">
+            <p class="msg">{{session('msg')}}</p>
+        </div>
+    @endif
     @yield('content')
+
+    <!-- Rodapé -->
+    <div class="container-fluid fixed-bottom">
+        <div class="row">
+            <div class="col bg-dark p-3">
+                <div class="copyright text-center">
+                    <font style="vertical-align: inherit;">
+                        <font class="text-capitalize text-white-50" style="vertical-align: inherit;">scorpion tec - 2020 - todos os direitos reservados.</font>
+                    </font>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <!-- Arquivos mportantes do layout -->
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
