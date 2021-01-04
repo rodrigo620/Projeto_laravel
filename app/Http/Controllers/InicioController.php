@@ -28,7 +28,7 @@ class InicioController extends Controller
         $event->descricao = $request->descricao;
         $event->save();
 
-        return redirect('/')->with('msg','Tecnica publicada com sucesso!!');
+        return redirect('/')->with('msg');
     }
 
     public function compartilhar(){

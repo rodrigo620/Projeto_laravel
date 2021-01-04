@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body class="p-0">
-    <div class="container-fluid p-0">
-        <!-- Menu -->
-    
-    <!-- Menu -->
     <div class="container-fluid bg-primary sticky-top">
         <header>
             <div class="row">
@@ -34,12 +30,6 @@
                             <a href="/"><button type="button" class="btn btn-primary"><font class="border-right pr-3">inicio</font></button></a>
                             <a href="/compartilhar"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Compartilhar</font></button></a>
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Contatos</button>
-                        
-                        
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" id="search" name="search">
-                                <button class="btn btn-success my-2 my-sm-0" type="button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pesquisa</font></font></button>
-                            </form>
                         </div>
                     </nav>
                     
@@ -76,10 +66,11 @@
     </div>
     <!-- Conteudo -->
     @if(session('msg'))
-        <div class="border border-secondary mw-100 bg-success">
-            <p class="msg">{{session('msg')}}</p>
+        <div class="alert alert-success">
+            <strong>Sucesso!</strong> Compartilhamento bem sucedido.
         </div>
     @endif
+    @yield('sessao1')
     @yield('content')
 
     <!-- Rodapé -->

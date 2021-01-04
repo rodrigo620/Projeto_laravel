@@ -8,8 +8,9 @@ use App\Models\Desenho;
 class DesenhoController extends Controller
 {
     public function index(){
-        $events = Desenho::all();
-        return view('home',['desenho' => $events]);
+        $desenhos = Desenho::orderby('id');
+        dd ($desenhos);
+        return view('home',['desenhos' => $desenhos]);
     }
 
     public function create(){
@@ -18,10 +19,11 @@ class DesenhoController extends Controller
     }
 
     public function store(Request $request){
-        $event = new Desenho;
+        $desenho = new Desenho;
 
-        $event->titulo = $request->titulo;
-        $event->autor = $request->autor;
+
+        $desenho->titulo = $request->titulo;
+        $desenho->autor = $request->autor;
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
             $requestImage = $request->image;
@@ -30,13 +32,14 @@ class DesenhoController extends Controller
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/desenho'), $imageName);
 
-            $event->image = $imageName;
-            $event->save();
+            $desenho->image = $imageName;
+            dd ($desenho);
+            $desenho->save();
         }
 
         
 
-        return redirect('/')->with('msg','Tecnica publicada com sucesso!!');
+        return redirect('/')->with('msg',);
     }
 
     public function compartilhar(){
