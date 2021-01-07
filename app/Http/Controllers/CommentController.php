@@ -3,26 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comentario;
 
-class ComentarioController extends Controller
+class CommentController extends Controller
 {
     public function index(){
-        $comment = Comment::All();
+        $comments = Comentario::orderby('id');
         dd ($comments);
+
         return view('home',['comments' => $comments]);
         
     }
 
     public function create(){
-        
+        return view('layout.home', []);
     }
 
     public function store(Request $request){
-        $comment = new Comment;
+        $comment = new Comentario;
 
         $comment->nome = $request->nome;
         $comment->email = $request->email;
-        $comment->comment = $request->comment;
+        $comment->cometario = $request->cometario;
         $comment->save();
 
         return redirect('/')->with('msg');
@@ -30,6 +32,6 @@ class ComentarioController extends Controller
 
     public function compartilhar(){
         
-        
+        return view('compartilhar', []);
     }
 }

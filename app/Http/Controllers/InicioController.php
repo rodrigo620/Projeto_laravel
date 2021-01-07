@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\Desenho;
-use App\Models\Comment;
+use App\Models\Comentario;
 
 class InicioController extends Controller
 {
@@ -14,8 +14,8 @@ class InicioController extends Controller
         
         $events = Event::all();
         $desenhos = desenho::all();
-        $comment = comment::all();
-        return view('home',['events' => $events , 'desenhos' => $desenhos , 'comment' => $comment]);
+        $comments = Comentario::all();
+        return view('home',['events' => $events , 'desenhos' => $desenhos , 'comments' => $comments]);
     }
 
     public function create(){

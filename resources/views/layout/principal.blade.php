@@ -70,7 +70,7 @@
             <strong>Sucesso!</strong> Compartilhamento bem sucedido.
         </div>
     @endif
-    @yield('sessao1')
+    
     @yield('content')
 
     <!-- Rodapé -->

@@ -113,38 +113,40 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control" placeholder="Enter email" id="email" placeholder="Informe seu e-maii aqui...">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Informe seu e-maii aqui...">
                                 </div>
                             </div>
                         </div>
                         <!-- Mensagem -->
                         <div class="col-block col-md-6">
                             <div class="form-group">
-                                <label for="comment">Comentário:</label>
-                                <textarea class="form-control" rows="5" id="comment" placeholder="Comentário..."></textarea>
+                                <label for="comentario">Comentário:</label>
+                                <textarea type="text" name="comentario" class="form-control" rows="5" id="comentario" placeholder="Digite seu comentário aqui..."></textarea>
                             </div>
                         </div>
                     </div>
                     
-                    <input type="submit" value="Comentar" class="btn btn-primary m-2">
+                    <input type="submit" value="Comentar" class="btn btn-primary m-5">
                     
                 </form>
             </div>
 
-
-    <div class="media border p-3">
-  <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-  <div class="media-body">
-    <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-    <p>Lorem ipsum...</p>
-    <div class="media p-3">
-      <img src="img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
-      <div class="media-body">
-        <h4>Jane Doe <small><i>Posted on February 20 2016</i></small></h4>
-        <p>Lorem ipsum...</p>
-      </div>
-    </div> 
-  </div>
-</div>
     
+        <div class="media border p-3 m-5">
+            <div class="container">
+                <div class="row">
+                @foreach($comments as $comment)
+                    <div class="col">
+                        <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                        <div class="media-body">
+                            <h4>{{$comment -> nome}}: <small><i>Postado - {{$comment -> created_at}}</i></small></h4>
+                            <p>{{$comment -> comentario}}</p>
+                        </div>
+                        </div>
+                    </div>
+                @endforeach    
+            </div>
+        
+        </div>
+  
 @endsection

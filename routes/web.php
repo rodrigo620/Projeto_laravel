@@ -24,4 +24,4 @@ Route::post('/criar', [InicioController::class, 'store']);
 Route::get('/desenho', [DesenhoController::class, 'create']);
 Route::post('/criar_desenho', [DesenhoController::class, 'store']);
 
-Route::post('/comentar', [DesenhoController::class, 'store']);
+Route::post('/comentar', [CommentController::class, 'store']);
