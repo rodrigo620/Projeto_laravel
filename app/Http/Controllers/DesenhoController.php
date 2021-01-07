@@ -32,8 +32,7 @@ class DesenhoController extends Controller
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/desenho'), $imageName);
 
-            $desenho->image = $imageName;
-            dd ($desenho);
+            $desenho->image = $imageName;   
             $desenho->save();
         }
 

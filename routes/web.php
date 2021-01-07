@@ -20,6 +20,8 @@ Route::get('/compartilhar', [InicioController::class, 'compartilhar']);
 Route::get('/tecnica', [InicioController::class, 'create']);
 Route::post('/criar', [InicioController::class, 'store']);
 
-Route::get('/', [DesenhoController::class, 'index']);
+
 Route::get('/desenho', [DesenhoController::class, 'create']);
 Route::post('/criar_desenho', [DesenhoController::class, 'store']);
+
+Route::post('/comentar', [DesenhoController::class, 'store']);
