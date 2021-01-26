@@ -70,4 +70,18 @@ class InicioController extends Controller
         return redirect('/dashboard');
 
     }
+
+    public function edit($id) {
+
+        $event = Event::findOrfail($id);
+
+        return view('edit', ['event' => $event]);
+
+    }
+
+    public function update(Request $request) {
+
+        Event::findOrfail($request -> id)->update($request->all());
+        return redirect('/dashboard');
+    }
 }

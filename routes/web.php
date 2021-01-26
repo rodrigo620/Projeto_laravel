@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\DesenhoController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', [InicioController::class, 'index']);
 Route::get('/compartilhar', [InicioController::class, 'compartilhar']);
@@ -26,10 +27,16 @@ Route::get('/desenho', [DesenhoController::class, 'create'])->middleware('auth')
 Route::post('/criar_desenho', [DesenhoController::class, 'store']);
 
 Route::post('/comentar', [CommentController::class, 'store']);
+Route::get('/contatos', [CommentController::class, 'index']);
 
 Route::get('/mais', [InicioController::class, 'mais']);
 
 Route::get('/dashboard', [InicioController::class, 'dashboard'])->middleware('auth');
 
-Route::delete('/tecnica/{id}', [InicioController::class, 'destroy']);
-Route::delete('/desenho/{id}', [DesenhoController::class, 'deletar']);
+Route::delete('/tecnica/{id}', [InicioController::class, 'destroy'])->middleware('auth');;
+Route::delete('/desenho/{id}', [DesenhoController::class, 'deletar'])->middleware('auth');;
+Route::get('edit/{id}', [InicioController::class, 'edit'])->middleware('auth');
+Route::put('update/{id}', [InicioController::class, 'update'])->middleware('auth');
+
+Route::get('/desenho/edit/{id}', [DesenhoController::class, 'edit'])->middleware('auth');
+Route::put('/desenho/update/{id}', [DesenhoController::class, 'update'])->middleware('auth');

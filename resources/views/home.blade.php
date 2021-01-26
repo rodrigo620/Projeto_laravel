@@ -92,44 +92,45 @@
     </div>
     <!-- Linha dividindo as sessões 2 - 3 -->
     <hr style="width:80%;text-align: center; background-color: black;">
-
+    
     <!-- Contatos -->
-    <div class="container">
-        <h2 class="text-center mt-5 font-weight-bold">Contatos</h2>
-    </div>
-    <div id="event-create-container" class="col-md-8">
-                <form action="/comentar" method="POST">
-                    @csrf
-                    <!-- Botão -->
-                    <div class="row">
-                        <div class="col col-md-6 p-0">
-                            <!-- Nome -->
-                            <div class="col">
-                                <div class="form-group">
-                                <label for="nome">Nome:</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome aqui...">
-                                </div>
-                            </div>
-                            <!-- E-mail -->
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Informe seu e-maii aqui...">
-                                </div>
+    @auth
+        <div class="container">
+            <h2 class="text-center mt-5 font-weight-bold">Contatos</h2>
+        </div>
+        <div id="event-create-container" class="col-md-8">
+            <form action="/comentar" method="POST">
+                @csrf
+                <!-- Botão -->
+                <div class="row">
+                    <div class="col col-md-6 p-0">
+                        <!-- Nome -->
+                        <div class="col">
+                            <div class="form-group">
+                            <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome aqui...">
                             </div>
                         </div>
-                        <!-- Mensagem -->
-                        <div class="col-block col-md-6">
+                        <!-- E-mail -->
+                        <div class="col">
                             <div class="form-group">
-                                <label for="comentario">Comentário:</label>
-                                <textarea type="text" name="comentario" class="form-control" rows="5" id="comentario" placeholder="Digite seu comentário aqui..."></textarea>
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Informe seu e-maii aqui...">
                             </div>
                         </div>
                     </div>
-                    
-                    <input type="submit" value="Adicionar Contato" class="btn btn-primary m-5">
-                    
-                </form>
-            </div>
-  
+                    <!-- Mensagem -->
+                    <div class="col-block col-md-6">
+                        <div class="form-group">
+                            <label for="comentario">Comentário:</label>
+                            <textarea type="text" name="comentario" class="form-control" rows="5" id="comentario" placeholder="Digite seu comentário aqui..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="submit" value="Adicionar Contato" class="btn btn-primary m-5">
+                
+            </form>
+        </div>
+    @endauth                
 @endsection

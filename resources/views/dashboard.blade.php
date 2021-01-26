@@ -27,7 +27,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="#" class="btn btn-primary edit-btn">Editar</a>
+                                        <a href="/edit/{{ $event -> id}}" class="btn btn-primary edit-btn">Editar</a>
                                     </div>
                                     <div class="col-md-3">
                                         <form action="/tecnica/{{$event->id}}" method="POST">
@@ -59,11 +59,18 @@
                     <img class="mr-3 img-thumbnail" src="/img/desenho/{{$desenho -> image}}" alt="{{$desenho -> titulo}}">
                 </div>
                 <div class="card-footer">
-                    <form action="/desenho/{{$desenho->id}}" method="POST" class="align-item-bottom">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn delete-btn btn-danger">Deletar</botton>
-                    </form>
+                    <div class="row">
+                        <div class="col-4">
+                            <form action="/desenho/{{$desenho->id}}" method="POST" class="align-item-bottom">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn delete-btn btn-danger">Deletar</botton>
+                            </form>
+                        </div>
+                        <div class="col-md-4 offset-4">
+                            <a href="/desenho/edit/{{ $event -> id}}" class="btn btn-primary edit-btn ml-5">Editar</a>
+                        </div>  
+                    </div>
                 </div>
             </div>
         </div>

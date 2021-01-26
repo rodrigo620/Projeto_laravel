@@ -8,15 +8,10 @@ use App\Models\Comentario;
 class CommentController extends Controller
 {
     public function index(){
-        $comments = Comentario::orderby('id');
-        dd ($comments);
+        $comments = Comentario::all();
 
-        return view('home',['comments' => $comments]);
+        return view('mais_contatos',['comments' => $comments]);
         
-    }
-
-    public function create(){
-        return view('layout.home', []);
     }
 
     public function store(Request $request){
@@ -24,12 +19,13 @@ class CommentController extends Controller
 
         $comment->nome = $request->nome;
         $comment->email = $request->email;
-        $comment->cometario = $request->cometario;
-        $comment->save();
-
-        return redirect('/')->with('msg');
+        $comment->comentario = $request->comentario;
         $user = auth()->user();
         $comment->user_id = $user->id;
+        $comment->save();
+
+        return redirect('/');
+        
     }
 
     public function compartilhar(){

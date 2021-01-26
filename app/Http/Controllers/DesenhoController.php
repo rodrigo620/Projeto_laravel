@@ -59,4 +59,33 @@ class DesenhoController extends Controller
         return redirect('/dashboard');
 
     }
+
+    public function edit($id) {
+        
+
+        $desenho = Desenho::findOrfail($id);
+
+        return view('desenho-edit', ['desenho' => $desenho]);
+
+    }
+
+    public function update(Request $request) {
+
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/desenho'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+
+        Desenho::findOrfail($request -> id)->update($data);
+
+        return redirect('/dashboard');
+    }
 }

@@ -73,6 +73,11 @@
                                 <a href="https://www.instagram.com/rodrigosilva.br/?hl=pt-br"><p>@rodrigosilva.br</p></a>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6 col-block">
+                                <a href="/contatos" class="btn  btn-primary">Mais contatos</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
