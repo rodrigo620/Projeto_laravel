@@ -40,3 +40,7 @@ Route::put('update/{id}', [InicioController::class, 'update'])->middleware('auth
 
 Route::get('/desenho/edit/{id}', [DesenhoController::class, 'edit'])->middleware('auth');
 Route::put('/desenho/update/{id}', [DesenhoController::class, 'update'])->middleware('auth');
+
+Route::delete('/contatos/{id}', [CommentController::class, 'destroy'])->middleware('auth');;
+Route::get('/contatos/edit/{id}', [CommentController::class, 'edit'])->middleware('auth');
+Route::put('/contatos/update/{id}', [CommentController::class, 'update'])->middleware('auth');

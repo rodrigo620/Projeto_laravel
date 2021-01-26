@@ -9,6 +9,10 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'comments' => 'array'
+    ];
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }

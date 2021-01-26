@@ -32,4 +32,27 @@ class CommentController extends Controller
         
         return view('compartilhar', []);
     }
+
+    public function destroy($id){
+        
+        Comentario::findOrfail($id)->delete();
+        
+
+        return redirect('/contatos');
+
+    }
+
+    public function edit($id) {
+
+        $comments = Comentario::findOrfail($id);
+
+        return view('contato-edit', ['comments' => $comments]);
+
+    }
+
+    public function update(Request $request) {
+
+        Comentario::findOrfail($request -> id)->update($request->all());
+        return redirect('/contatos');
+    }
 }

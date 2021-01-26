@@ -15,6 +15,19 @@
                     <p>{{$comment->comentario}}</p>
                 </div>
                 <div class="card-footer">
+                    <div class="row">
+                        <div class="col-4">
+                            <form action="/contatos/{{$comment->id}}" method="POST" class="align-item-bottom">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn delete-btn btn-danger">Deletar</botton>
+                            </form>
+                        </div>
+                        <div class="col-md-4 offset-4">
+                            <a href="/contatos/edit/{{ $comment -> id}}" class="btn btn-primary edit-btn ml-5">Editar</a>
+                        </div>  
+                    </div>
+
                 </div>
             </div>
         </div>
