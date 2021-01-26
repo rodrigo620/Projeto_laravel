@@ -16,17 +16,15 @@
                     <!-- Imagens -->
                     <div class="carousel-inner bg-primary">
                         <!-- Imagem 01 -->
-                      <div class="carousel-item active">
-                        <img class="d-block w-50 rounded mx-auto img-fluid" src="/img/desenhos/auto-retrato.jpg" class="rounded mx-auto d-block" alt="1 slide">
-                      </div>
-                      <!-- Imagem 01 -->
-                      <div class="carousel-item">
-                        <img class="d-block w-50 rounded mx-auto img-fluid" src="/img/desenhos/ohana.jpg" alt="2 slide">
-                      </div>
-                      <!-- Imagem 01 -->
-                      <div class="carousel-item">
-                        <img class="d-block w-50 rounded mx-auto img-fluid" src="/img/desenhos/mandala.jpg" alt="3 slide">
-                      </div>
+                        <div class="carousel-item active">
+                            <img class="d-block w-50 rounded mx-auto img-fluid" src="/img/desenhos/auto-retrato.jpg" class="rounded mx-auto d-block" alt="slide 1">
+                        </div>
+                        @foreach($desenhos as $desenho)
+                            <div class="carousel-item">
+                                <img class="d-block w-50 rounded mx-auto img-fluid" src="/img/desenho/{{$desenho -> image}}" class="rounded mx-auto d-block" alt="{{$desenho -> titulo}}">
+                            </div>
+                        @endforeach
+                      
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,8 +52,11 @@
             <!-- Imagem 01 -->
             @foreach ($desenhos as $desenho)
                 <div class="col-md-3 col-block mb-5">
-                    <img src="/img/desenho/{{$desenho -> image}}" class="img-thumbnail rounded-circle img-fluid" alt="Cinque Terre">
-                    <div class="col"><h2 class="text-center"><strong>{{$desenho -> titulo}}</strong></h2></div>
+                    <a href="/"><img src="/img/desenho/{{$desenho -> image}}" class="img-thumbnail rounded-circle img-fluid" alt="Cinque Terre"></a>
+                    <div class="col">
+                        <h2 class="text-center"><strong>{{$desenho -> titulo}}</strong></h2>
+                        <h5 class="text-center"><strong>autor</strong></h5>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -81,7 +82,7 @@
                         <p>{{substr($event -> descricao, 0, 140)}}...</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary " data-toggle="collapse" data-target="#active">Ler mais</button>
+                        <a href="/tecnica/{{$event -> id}}"><button class="btn btn-primary ">Ler mais</button></a>
                     </div>
                 </div>
             </div>
@@ -126,27 +127,9 @@
                         </div>
                     </div>
                     
-                    <input type="submit" value="Comentar" class="btn btn-primary m-5">
+                    <input type="submit" value="Adicionar Contato" class="btn btn-primary m-5">
                     
                 </form>
             </div>
-
-    
-        <div class="media border p-3 m-5">
-            <div class="container">
-                <div class="row">
-                @foreach($comments as $comment)
-                    <div class="col">
-                        <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                        <div class="media-body">
-                            <h4>{{$comment -> nome}}: <small><i>Postado - {{$comment -> created_at}}</i></small></h4>
-                            <p>{{$comment -> comentario}}</p>
-                        </div>
-                        </div>
-                    </div>
-                @endforeach    
-            </div>
-        
-        </div>
   
 @endsection

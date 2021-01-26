@@ -23,11 +23,7 @@
                             <label for="titulo">Titulo:</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo da Obra...">
                         </div>
-                        <!-- Autor -->
-                        <div class="form-group">
-                            <label for="titulo">Autor:</label>
-                            <input type="text" class="form-control" id="autor" name="autor" placeholder="Nome do autor...">
-                        </div>
+                        
                         <!-- Botão -->
                         <input type="submit" value="Criar Publicação" class="btn btn-primary mb-5">
                     </form>

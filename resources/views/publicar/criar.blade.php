@@ -17,11 +17,6 @@
                         <label for="titulo">Técnica:</label>
                         <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Como se chama essa...">
                     </div>
-                    <!-- Autor -->
-                    <div class="form-group">
-                        <label for="titulo">Autor:</label>
-                        <input type="text" class="form-control" id="autor" name="autor" placeholder="Nome do autor...">
-                    </div>
                     <!-- Descrição -->
                     <div class="form-group">
                         <label class="d-block" for="titulo">Descrição:</label>

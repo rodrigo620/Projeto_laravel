@@ -17,7 +17,6 @@ class CreateDesenhosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('titulo');
-            $table->string('autor');
 
         });
     }

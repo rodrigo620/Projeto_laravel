@@ -28,6 +28,8 @@ class CommentController extends Controller
         $comment->save();
 
         return redirect('/')->with('msg');
+        $user = auth()->user();
+        $comment->user_id = $user->id;
     }
 
     public function compartilhar(){

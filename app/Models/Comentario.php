@@ -9,4 +9,7 @@ class Comentario extends Model
 {
     use HasFactory;
     protected $table = "comments";
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

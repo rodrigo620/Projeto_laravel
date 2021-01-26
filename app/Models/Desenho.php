@@ -9,4 +9,7 @@ class Desenho extends Model
 {
     use HasFactory;
     protected $table = "desenhos";
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

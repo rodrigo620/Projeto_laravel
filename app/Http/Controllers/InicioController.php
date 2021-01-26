@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Desenho;
 use App\Models\Comentario;
+use App\Models\User;
 
 class InicioController extends Controller
 {
@@ -27,15 +28,46 @@ class InicioController extends Controller
         $event = new Event;
 
         $event->titulo = $request->titulo;
-        $event->autor = $request->autor;
         $event->descricao = $request->descricao;
+        $user = auth()->user();
+        $event->user_id = $user->id;
         $event->save();
 
         return redirect('/')->with('msg');
+    
     }
 
     public function compartilhar(){
         
         return view('compartilhar', []);
+    }
+
+    public function show($id){
+        
+        $events = Event::findOrFail($id);
+
+        $eventOwner = User::where('id', $events->user_id)->first()->toArray();
+
+        return view('show', ['events' => $events, 'eventOwner' => $eventOwner]);
+    }
+
+    public function dashboard(){
+        
+        $user = auth()->user();
+        $events = $user->events;
+        $desenhos = $user ->desenhos;
+        
+
+        return view('dashboard', ['events'=>$events, 'desenhos' => $desenhos]);
+
+    }
+
+    public function destroy($id){
+        
+        Event::findOrfail($id)->delete();
+        
+
+        return redirect('/dashboard');
+
     }
 }

@@ -13,7 +13,7 @@
             <div class="row">
                 <!-- Logo -->
                 <div class="ml-5 col-md-inline">
-                    <a class="" href="#">
+                    <a class="" href="/">
                         <img src="/img/nome-logo.png" width="100" height="60" alt="" loading="lazy">
                     </a>
                 </div>
@@ -29,6 +29,19 @@
                         
                             <a href="/"><button type="button" class="btn btn-primary"><font class="border-right pr-3">inicio</font></button></a>
                             <a href="/compartilhar"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Compartilhar</font></button></a>
+                            @auth
+                            <a href="/dashboard"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Minha publicações</font></button></a>
+                            <form action="/logout" method="POST">
+                            @csrf
+                            <a href="/logout" class="nav-link text-white" onclick="event.preventDefault();this.closest('form').submit();"><font class="border-right pr-3">Sair</font></a>
+                            </form>
+                            
+                            @endauth
+                            
+                            @guest
+                            <a href="/login"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Login</font></button></a>
+                            <a href="/register"><button type="button" class="btn btn-primary p-0"><font class="border-right pr-3">Se cadastrar</font></button></a>
+                            @endguest
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Contatos</button>
                         </div>
                     </nav>
@@ -54,6 +67,7 @@
                                 <h6>Telefone:</h6>
                                 <p>(89) 99432****</p>
                             </div>
+                            
                             <div class="col-md-6 col-block">
                                 <h6>Instagram:</h6>
                                 <a href="https://www.instagram.com/rodrigosilva.br/?hl=pt-br"><p>@rodrigosilva.br</p></a>
@@ -70,13 +84,17 @@
             <strong>Sucesso!</strong> Compartilhamento bem sucedido.
         </div>
     @endif
+    <div class="container-fluid">
+        <div class="row">
+            @yield('content')
+        </div>
+    </div>
     
-    @yield('content')
 
     <!-- Rodapé -->
     <div class="container-fluid fixed-bottom">
         <div class="row">
-            <div class="col bg-dark p-3">
+            <div class="col bg-dark ">
                 <div class="copyright text-center">
                     <font style="vertical-align: inherit;">
                         <font class="text-capitalize text-white-50" style="vertical-align: inherit;">scorpion tec - 2020 - todos os direitos reservados.</font>
